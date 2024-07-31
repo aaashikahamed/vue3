@@ -11,7 +11,7 @@
   <body>
     <div id="app">
       <div class="nav-bar"></div>
-      
+      <div class="cart">Cart({{ cart }})</div>
       <div class="product-display">
         <div class="product-container">
           <div class="product-image">
@@ -34,9 +34,18 @@
              <ul>
               <li v-for="detail in details">{{detail}}</li>
              </ul>
-             <div v-for="variant in variants" :key = "variant.id"> {{variant.color}}</div>
 
-             <div v-for="size in sizes">Size : <strong>  {{size.size}} </strong></div>
+             <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">{{ variant.color }}</div>
+             <!-- <button class="button" v-on:click="cart += 1">Add to Cart</button>
+             <button class="button" v-on:click="cart = 0">Reset</button> -->
+
+             <!-- click event Method -->
+             <button class="button" v-on:click="addtoCart"> Add to Cart</button>
+             <button class="button" v-on:click="decrementCart"> Decrement 1</button>
+             <button class="button" v-on:click="resetCart"> Reset </button>
+
+
+             <!-- <div v-for="size in sizes">Size : <strong>  {{size.size}} </strong></div> -->
 
              <!-- OnSale -->
              <!-- <p v-if="onSale" style="border: 1px solid red; width: 80px; background-color: aqua; text-align: center;">On Sale</p> -->
