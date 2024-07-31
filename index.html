@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Vue Mastery</title>
+    <title>Practice</title>
     <!-- Import Styles -->
     <link rel="stylesheet" href="./assets/styles.css" />
     <!-- Import Vue.js -->
@@ -17,9 +17,22 @@
           <div class="product-image">
             <!-- image goes here -->
              <img v-bind:src="image">
+            
           </div>
           <div class="product-info">
             <h1>{{ product }}</h1>
+            <p v-if="inStock">In Stock</p>
+            <p v-else=>Out of Stock</p>
+            <!-- <p v-show="inStock"> Testing Visibility </p> -->
+
+            <!-- Creating chained conditional logic  -->
+             <p style="color: blue;"> <u>Creating chained conditional login</u> </p>
+             <p v-if="inventory > 10">In stock</p>
+             <p v-else-if="inventory < 10 && inventory > 0" >Almost Sold Out</p>
+             <p v-else>Sold Out</p>
+
+             <!-- OnSale -->
+             <!-- <p v-if="onSale" style="border: 1px solid red; width: 80px; background-color: aqua; text-align: center;">On Sale</p> -->
           </div>
         </div>
       </div>
