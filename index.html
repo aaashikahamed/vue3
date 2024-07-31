@@ -22,9 +22,10 @@
           <div class="product-info h1" >
             <h1>{{ title }}</h1>
             <p v-if="inStock">In Stock</p>
-            <p v-else=>Out of Stock</p>
+            <p v-else>Out of Stock</p>
             <!-- <p v-show="inStock"> Testing Visibility </p> -->
 
+            <p>Shipping: {{ shipping }}</p>
             <!-- Creating chained conditional logic  -->
              <p style="color: blue;"> <u>Creating chained conditional login</u> </p>
              <p v-if="inventory > 10">In stock</p>
@@ -54,10 +55,15 @@
           </div>
         </div>
       </div>
+      <!-- <product-details :details=""></product-details> -->
     </div>
 
     <!-- Import App -->
     <script src="./main.js"></script>
+
+        <!-- Import Component -->
+        <script src="./components/ProductDisplay.js"></script>
+        <script src="./components/ProductDetails.js"></script>
 
     <!-- Mount App -->
     <script>

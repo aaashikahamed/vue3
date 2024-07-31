@@ -52,6 +52,15 @@ const app = Vue.createApp({
         },
         inStock(){
             return this.variants[this.selectedVariant].quantity
-        }
+        },
+        shipping (){
+            if(this.premium){
+                return "Free"
+            }
+                return "2.99"
+            
+        },
+
     }
+
 })
