@@ -1,5 +1,5 @@
 
-<h1 align="center"> Completed along side when following a course</h1>
+<h1 align="center"> Simple Product View Page</h1>
 <hr>
 <h3  align="center"> Simple Single page Apllication</h3>
 <hr>
