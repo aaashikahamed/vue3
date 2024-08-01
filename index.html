@@ -11,50 +11,8 @@
   <body>
     <div id="app">
       <div class="nav-bar"></div>
-      <div class="cart">Cart({{ cart }})</div>
-      <div class="product-display">
-        <div class="product-container">
-          <div class="product-image">
-            <!-- image goes here -->
-             <img :class="{'out-of-stock-img ': !inStock}" v-bind:src="image">
-            
-          </div>
-          <div class="product-info h1" >
-            <h1>{{ title }}</h1>
-            <p v-if="inStock">In Stock</p>
-            <p v-else>Out of Stock</p>
-            <!-- <p v-show="inStock"> Testing Visibility </p> -->
-
-            <p>Shipping: {{ shipping }}</p>
-            <!-- Creating chained conditional logic  -->
-             <p style="color: blue;"> <u>Creating chained conditional login</u> </p>
-             <p v-if="inventory > 10">In stock</p>
-             <p v-else-if="inventory < 10 && inventory > 0" >Almost Sold Out</p>
-             <p v-else>Sold Out</p>
-
-             <ul>
-              <li v-for="detail in details">{{detail}}</li>
-             </ul>
-
-             <div v-for="variant, index in variants" :key="variant.id" @mouseover="updateVariant(index)" class="color-circle" v-bind:style="{ backgroundColor: variant.color}"></div>
-             <!-- <button class="button" v-on:click="cart += 1">Add to Cart</button>
-             <button class="button" v-on:click="cart = 0">Reset</button> -->
-
-             <!-- click event Method -->
-             <button class="button" v-on:click="addtoCart" 
-             :class="{disabledButton: !inStock}"
-             :disabled="!inStock"> Add to Cart</button>
-             <button class="button" v-on:click="decrementCart"> Decrement 1</button>
-             <button class="button" v-on:click="resetCart"> Reset </button>
-
-
-             <!-- <div v-for="size in sizes">Size : <strong>  {{size.size}} </strong></div> -->
-
-             <!-- OnSale -->
-             <!-- <p v-if="onSale" style="border: 1px solid red; width: 80px; background-color: aqua; text-align: center;">On Sale</p> -->
-          </div>
-        </div>
-      </div>
+      <div class="cart">Cart({{ cart.length }})</div>
+      <product-display :premium="premium" @add-to-cart="updateCart" @dec-from-cart="decCart" @reset-cart="resetCart"></product-display>
       <!-- <product-details :details=""></product-details> -->
     </div>
 
@@ -63,7 +21,7 @@
 
         <!-- Import Component -->
         <script src="./components/ProductDisplay.js"></script>
-        <script src="./components/ProductDetails.js"></script>
+        <!-- <script src="./components/ProductDetails.js"></script> -->
 
     <!-- Mount App -->
     <script>

@@ -41,7 +41,7 @@ app.component('product-display', {
              <button class="button" v-on:click="addtoCart" 
              :class="{disabledButton: !inStock}"
              :disabled="!inStock"> Add to Cart</button>
-             <button class="button" v-on:click="decrementCart"> Decrement 1</button>
+             <button class="button" v-on:click="decrementCart" > Decrement 1</button>
              <button class="button" v-on:click="resetCart"> Reset </button>
 
 
@@ -80,17 +80,13 @@ app.component('product-display', {
             if(typeof this.cart =="string"){
                 this.cart = 0
             }
-            this.cart += 1
+            this.$emit('add-to-cart',this.variants[this.selectedVariant].id)
         },
         resetCart(){
-            this.cart = 0
+            this.$emit("reset-cart")
         },
         decrementCart(){
-            if(this.cart > 0){
-                this.cart -= 1
-            }else{
-                this.cart = "No Items in the cart"
-            }
+            this.$emit('dec-from-cart')
         },
         updateVariant(index){
             this.selectedVariant = index
