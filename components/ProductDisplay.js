@@ -51,6 +51,8 @@ app.component('product-display', {
              <!-- <p v-if="onSale" style="border: 1px solid red; width: 80px; background-color: aqua; text-align: center;">On Sale</p> -->
           </div>
         </div>
+        <review-list :reviews="reviews" v-if="reviews.length"> </review-list>
+        <review-forms @review-submitted="addReview"></review-forms>
       </div>`,
 
       data() {
@@ -72,7 +74,8 @@ app.component('product-display', {
                 {id:124, size: 'M'},
                 {id:125, size: 'L'},
                 {id:126, size: 'XL'},
-            ]
+            ],
+            reviews:[]
         }
     },
     methods : {
@@ -91,6 +94,9 @@ app.component('product-display', {
         updateVariant(index){
             this.selectedVariant = index
             // console.log(this.selectedVariant)
+        },
+        addReview(){
+            this.reviews.push(review)
         }
     },
     computed : {
